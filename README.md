@@ -10,6 +10,20 @@ Before:  Vague intent ──→ AI guesses ──→ "Not what I wanted" ──�
 After:   Vague intent ──→ Spec ◀──→ Clarify ──→ Execute ──→ Verify against Spec
 ```
 
+## Why This Exists                                        
+                                                                                                        
+In the AI coding world, Spec-Driven Development (SDD) has proven its value — define what you want before writing code, and you get fewer rewrites, fewer misunderstandings, and better outcomes.
+
+But that raised a question: **if coding needs specs, why don't all complex tasks?**
+
+When you ask an AI to "write me an analysis report," it silently fills in the blanks — audience, tone, depth, structure, scope. These inferences are invisible to you, untraceable, and unmodifiable. You only discover the mismatch when the output lands and it's not what you had in mind.                                                                                  
+                                                            
+This is not a capability problem. It's an **alignment problem at the task level** — the gap between what you meant and what the AI assumed you meant.
+
+Specwise is an attempt to close that gap. Inspired by SDD practices in AI coding, it asks a simple question: what if every complex task — not just code — started with an explicit spec?
+
+This is still early. The current version is a first step, not a final answer. If this idea resonates with you, feedback and contributions are welcome.
+
 ## The Problem
 
 When you give AI a complex task, the real problem isn't intelligence — it's **implicit assumptions**.
