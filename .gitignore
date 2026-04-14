@@ -1,0 +1,14 @@
+# .claude/skills/ and .claude/commands/ are the core of this project
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Node (if any tooling is added later)
+node_modules/
