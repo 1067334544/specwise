@@ -16,9 +16,12 @@ Core principle: **Execution is strictly bound by the Spec.** What the Spec says 
 
 ## Prerequisites
 
-A **confirmed Spec** must exist before execution (from `/sw:spec`, `/sw:draft`, or `/sw:explore` → `/sw:spec` flow).
+A **confirmed Spec** must exist before execution. Execute accepts a Spec from two sources (checked in this order):
 
-If there's no confirmed Spec in the current conversation, inform the user:
+1. **Spec file path** — If the user passes a file path as argument (e.g., `/sw:execute specs/q2-report.spec.md`), read the Spec from that file. Display the Spec content to the user before proceeding.
+2. **Conversation context** — If no file path is given, look for a confirmed Spec in the current conversation (the existing behavior).
+
+If neither source provides a confirmed Spec, inform the user:
 > "No confirmed Spec found. Please use `/sw:spec` or `/sw:draft` to generate and confirm a Spec first, then execute."
 
 ## Execution Workflow
@@ -158,6 +161,15 @@ Final output format:
 ```
 
 This is "explainable completion" — not a vague percentage, but letting the user see precisely what was done, what wasn't, and why.
+
+### Step 5: Update Spec File Status
+
+If the Spec was loaded from a file (or was saved to a file during confirmation), update the file's YAML frontmatter:
+
+- Change `status: confirmed` → `status: executed`
+- Add `executed_date: YYYY-MM-DD`
+
+This creates an audit trail: the Spec file records when it was confirmed AND when it was executed against.
 
 ## Guardrails
 

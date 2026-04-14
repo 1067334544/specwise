@@ -167,6 +167,46 @@ After confirmation, use `/sw:execute` to execute based on this Spec.
 
 Precisely because of this, the pre-confirmation clarification process cannot be a formality — it must genuinely help the user surface issues they haven't thought of.
 
+### Step 5: Persist Spec to File
+
+**Confirmation = persistence.** When the user confirms the Spec, immediately save it to a file. Do not ask "would you like to save?" — saving IS the confirmation.
+
+#### File Location and Naming
+
+- Save to: `specs/{slug}.spec.md` in the project root
+- `{slug}`: a short, lowercase, hyphenated slug derived from the Spec's Objective (e.g., `add-origin-story-to-readme`, `q2-market-analysis-report`)
+- Create the `specs/` directory if it doesn't exist
+
+#### File Format
+
+```markdown
+---
+date: YYYY-MM-DD
+status: confirmed
+source: /sw:spec
+---
+
+## 📋 Task Spec
+
+### Core
+- **Objective**: [...]
+- **Expected Output**: [...]
+[... full Spec content as displayed in conversation ...]
+```
+
+The body is the exact same markdown content shown to the user during confirmation. The YAML frontmatter adds metadata:
+
+| Field | Value |
+|-------|-------|
+| `date` | Date of confirmation |
+| `status` | `confirmed` (later updated to `executed` by `/sw:execute`) |
+| `source` | Which command generated it: `/sw:spec`, `/sw:draft` |
+
+#### After Saving
+
+Inform the user of the saved file path:
+> "Spec confirmed and saved to `specs/{slug}.spec.md`. Use `/sw:execute` to execute based on this Spec."
+
 ## Relationship with Other Commands
 
 This Skill is one of four commands in the Specwise system:

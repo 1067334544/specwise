@@ -71,10 +71,17 @@ If inconsistencies are found, **warn the user but don't block confirmation**:
 
 > "I noticed a potential inconsistency: [specific description]. You can choose to modify it, or keep it as-is and confirm."
 
-### Step 6: Guide to Execution After Confirmation
+### Step 6: Persist Spec to File
 
-After confirmation, prompt:
-> "Spec confirmed. Use `/sw:execute` to execute based on this Spec."
+**Confirmation = persistence.** When the user confirms the Spec, immediately save it to a file. Do not ask "would you like to save?" — saving IS the confirmation.
+
+- Save to: `specs/{slug}.spec.md` in the project root (`{slug}` is a short, lowercase, hyphenated slug derived from the Spec's Objective)
+- Create the `specs/` directory if it doesn't exist
+- File format: YAML frontmatter (`date`, `status: confirmed`, `source: /sw:draft`) followed by the full Spec markdown content
+- See the [Spec Schema Reference](../specwise-spec/references/spec-schema.md) for the complete file format specification
+
+After saving, inform the user:
+> "Spec confirmed and saved to `specs/{slug}.spec.md`. Use `/sw:execute` to execute based on this Spec."
 
 ## Relationship with Other Commands
 

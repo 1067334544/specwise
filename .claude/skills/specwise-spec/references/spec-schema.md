@@ -114,3 +114,52 @@ Preferences along these dimensions:
 | Simple | One-sentence confirmation | Usually not needed | Not needed |
 | Medium | Fully filled | Key fields | As needed |
 | Complex | Fully filled | All fields filled | All fields filled |
+
+## File Format — Persisted Specs
+
+When a Spec is confirmed, it is saved to `specs/{slug}.spec.md` with YAML frontmatter:
+
+```markdown
+---
+date: 2026-04-14
+status: confirmed
+source: /sw:spec
+---
+
+## 📋 Task Spec
+
+### Core
+- **Objective**: [...]
+- **Expected Output**: [...]
+- **Constraints**: [...]
+- **Definition of Done**: [...]
+
+### Context
+- **Inputs**: [...]
+- **Background**: [...]
+- **References**: [...]
+- **Stated Assumptions**:
+  - ⚠️ [Assumption 1]
+  - ⚠️ [Assumption 2]
+
+### Refinement (if applicable)
+- **Priorities**: [...]
+- **Exclusions**: [...]
+- **Risks**: [...]
+- **Quality Preferences**: [...]
+```
+
+### Frontmatter Fields
+
+| Field | Values | Description |
+|-------|--------|-------------|
+| `date` | `YYYY-MM-DD` | Date the Spec was confirmed |
+| `status` | `confirmed` → `executed` | Updated by `/sw:execute` after execution |
+| `source` | `/sw:spec` or `/sw:draft` | Which command generated the Spec |
+| `executed_date` | `YYYY-MM-DD` | Added by `/sw:execute` after execution |
+
+### Naming Convention
+
+- Location: `specs/` directory in project root
+- Filename: `{slug}.spec.md` where `{slug}` is a short, lowercase, hyphenated slug derived from the Spec's Objective
+- Examples: `add-user-auth.spec.md`, `q2-market-analysis.spec.md`, `redesign-checkout-flow.spec.md`
